@@ -23,40 +23,42 @@ import StarIcon from '@mui/icons-material/Star';
 // Datos del libro (después podrías moverlo a un archivo separado)
 const libro = {
   id: 1,
-  titulo: "El Arte de la Programación Web",
+  titulo: "Cómo Ser Feliz",
   autor: "Hola Dalia",
-  precio: 39.99,
+  precio: 29.99,
   portada: "ruta-a-tu-imagen.jpg",
-  descripcion: "Descubre el fascinante mundo del desarrollo web moderno. Este libro te guiará paso a paso en el aprendizaje de las tecnologías más demandadas en la industria.",
+  descripcion: "Descubre los secretos de la felicidad verdadera y duradera. Una guía práctica que te ayudará a transformar tu vida y encontrar la paz interior que tanto buscas.",
   caracteristicas: [
-    "350 páginas de contenido práctico",
-    "Ejercicios y proyectos reales",
-    "Acceso a recursos adicionales online",
-    "Actualizaciones gratuitas de por vida",
-    "Certificado de finalización"
+    "200 páginas de sabiduría práctica",
+    "Ejercicios de autoconocimiento",
+    "Técnicas de mindfulness y meditación",
+    "Estrategias para el bienestar emocional",
+    "Acceso a meditaciones guiadas online"
   ],
   detalles: `Este libro está diseñado para:
-  - Principiantes que quieren iniciar en el desarrollo web
-  - Desarrolladores que buscan actualizar sus conocimientos
-  - Profesionales que desean especializarse en React y tecnologías modernas
+  - Personas que buscan encontrar su propósito en la vida
+  - Aquellos que quieren mejorar su bienestar emocional
+  - Quienes desean desarrollar una mentalidad positiva
+  - Cualquiera que busque herramientas prácticas para ser más feliz
   
   Aprenderás:
-  - Fundamentos de HTML, CSS y JavaScript
-  - React y sus mejores prácticas
-  - Desarrollo de aplicaciones web modernas
-  - Despliegue y optimización de sitios web`,
+  - Técnicas probadas para aumentar tu felicidad
+  - Métodos para manejar el estrés y la ansiedad
+  - Prácticas de gratitud y mindfulness
+  - Cómo construir relaciones más saludables
+  - Estrategias para mantener un estado de ánimo positivo`,
   resenas: [
     { 
       id: 1, 
-      autor: "Ana García", 
+      autor: "María López", 
       puntuacion: 5, 
-      comentario: "Excelente libro para aprender desarrollo web. Las explicaciones son claras y los ejemplos muy prácticos." 
+      comentario: "Este libro cambió mi perspectiva sobre la felicidad. Las técnicas son muy prácticas y fáciles de implementar en el día a día." 
     },
     { 
       id: 2, 
-      autor: "Carlos Rodríguez", 
+      autor: "Juan Martínez", 
       puntuacion: 5, 
-      comentario: "Lo recomiendo totalmente. He aprendido muchísimo y los proyectos prácticos son muy útiles." 
+      comentario: "Una guía extraordinaria para encontrar la felicidad interior. Los ejercicios de mindfulness son especialmente útiles." 
     }
   ]
 };
