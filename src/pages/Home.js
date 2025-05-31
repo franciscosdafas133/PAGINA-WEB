@@ -23,25 +23,41 @@ import StarIcon from '@mui/icons-material/Star';
 // Datos del libro (después podrías moverlo a un archivo separado)
 const libro = {
   id: 1,
-  titulo: "Tu Libro",
-  autor: "Tu Nombre",
-  precio: 29.99,
-  portada: "https://via.placeholder.com/600x900",
-  descripcion: "Una descripción cautivadora de tu libro que enganche a los lectores...",
+  titulo: "El Arte de la Programación Web",
+  autor: "Hola Dalia",
+  precio: 39.99,
+  portada: "ruta-a-tu-imagen.jpg",
+  descripcion: "Descubre el fascinante mundo del desarrollo web moderno. Este libro te guiará paso a paso en el aprendizaje de las tecnologías más demandadas en la industria.",
   caracteristicas: [
-    "Formato PDF y EPUB",
-    "Acceso inmediato",
-    "Actualizaciones gratuitas",
-    "Soporte premium"
+    "350 páginas de contenido práctico",
+    "Ejercicios y proyectos reales",
+    "Acceso a recursos adicionales online",
+    "Actualizaciones gratuitas de por vida",
+    "Certificado de finalización"
   ],
-  detalles: `Aquí va una descripción más detallada de tu libro. Puedes hablar sobre:
-  - El contenido específico
-  - A quién va dirigido
-  - Qué aprenderán los lectores
-  - Por qué deberían comprarlo`,
+  detalles: `Este libro está diseñado para:
+  - Principiantes que quieren iniciar en el desarrollo web
+  - Desarrolladores que buscan actualizar sus conocimientos
+  - Profesionales que desean especializarse en React y tecnologías modernas
+  
+  Aprenderás:
+  - Fundamentos de HTML, CSS y JavaScript
+  - React y sus mejores prácticas
+  - Desarrollo de aplicaciones web modernas
+  - Despliegue y optimización de sitios web`,
   resenas: [
-    { id: 1, autor: "María G.", puntuacion: 5, comentario: "¡Excelente libro! Superó mis expectativas." },
-    { id: 2, autor: "Juan P.", puntuacion: 5, comentario: "Muy bien estructurado y fácil de seguir." }
+    { 
+      id: 1, 
+      autor: "Ana García", 
+      puntuacion: 5, 
+      comentario: "Excelente libro para aprender desarrollo web. Las explicaciones son claras y los ejemplos muy prácticos." 
+    },
+    { 
+      id: 2, 
+      autor: "Carlos Rodríguez", 
+      puntuacion: 5, 
+      comentario: "Lo recomiendo totalmente. He aprendido muchísimo y los proyectos prácticos son muy útiles." 
+    }
   ]
 };
 
