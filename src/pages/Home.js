@@ -147,7 +147,13 @@ function Home() {
                     {libro.resenas.map((resena) => (
                       <Box key={resena.id} sx={{ borderBottom: 1, borderColor: 'divider', pb: 2 }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                          <Rating value={resena.puntuacion} readOnly size="small" />
+                          <Rating 
+                            value={resena.puntuacion} 
+                            readOnly 
+                            size="small"
+                            icon={<StarIcon fontSize="inherit" />}
+                            emptyIcon={<StarIcon fontSize="inherit" />}
+                          />
                           <Typography variant="subtitle2" sx={{ ml: 1 }}>
                             {resena.autor}
                           </Typography>
