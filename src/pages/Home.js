@@ -26,7 +26,7 @@ const libro = {
   titulo: "Cómo Ser Feliz",
   autor: "Hola Dalia",
   precio: 29.99,
-  portada: "ruta-a-tu-imagen.jpg",
+  portada: "https://via.placeholder.com/600x800",
   descripcion: "Descubre los secretos de la felicidad verdadera y duradera. Una guía práctica que te ayudará a transformar tu vida y encontrar la paz interior que tanto buscas.",
   caracteristicas: [
     "200 páginas de sabiduría práctica",
