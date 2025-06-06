@@ -1,187 +1,219 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Container,
   Grid,
   Typography,
   Button,
   Box,
-  Card,
-  CardMedia,
-  CardContent,
-  Tabs,
-  Tab,
   Paper,
-  Rating,
-  Chip,
-  Stack
+  useTheme,
+  useMediaQuery
 } from '@mui/material';
-import ShoppingCart from '../components/ShoppingCart';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import StarIcon from '@mui/icons-material/Star';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-// Datos del libro (después podrías moverlo a un archivo separado)
-const libro = {
-  id: 1,
-  titulo: "Cómo Ser Feliz",
-  autor: "Hola Dalia",
-  precio: 29.99,
-  portada: "https://via.placeholder.com/600x800",
-  descripcion: "Descubre los secretos de la felicidad verdadera y duradera. Una guía práctica que te ayudará a transformar tu vida y encontrar la paz interior que tanto buscas.",
-  caracteristicas: [
-    "200 páginas de sabiduría práctica",
-    "Ejercicios de autoconocimiento",
-    "Técnicas de mindfulness y meditación",
-    "Estrategias para el bienestar emocional",
-    "Acceso a meditaciones guiadas online"
-  ],
-  detalles: `Este libro está diseñado para:
-  - Personas que buscan encontrar su propósito en la vida
-  - Aquellos que quieren mejorar su bienestar emocional
-  - Quienes desean desarrollar una mentalidad positiva
-  - Cualquiera que busque herramientas prácticas para ser más feliz
-  
-  Aprenderás:
-  - Técnicas probadas para aumentar tu felicidad
-  - Métodos para manejar el estrés y la ansiedad
-  - Prácticas de gratitud y mindfulness
-  - Cómo construir relaciones más saludables
-  - Estrategias para mantener un estado de ánimo positivo`,
-  resenas: [
-    { 
-      id: 1, 
-      autor: "María López", 
-      puntuacion: 5, 
-      comentario: "Este libro cambió mi perspectiva sobre la felicidad. Las técnicas son muy prácticas y fáciles de implementar en el día a día." 
-    },
-    { 
-      id: 2, 
-      autor: "Juan Martínez", 
-      puntuacion: 5, 
-      comentario: "Una guía extraordinaria para encontrar la felicidad interior. Los ejercicios de mindfulness son especialmente útiles." 
-    }
-  ]
+// Constantes de colores
+const colors = {
+  primary: '#8B4513', // Marrón clásico
+  secondary: '#DAA520', // Dorado
+  background: '#FDF5E6', // Crema antiguo
+  text: '#2C1810', // Marrón oscuro para texto
+  accent: '#CD853F', // Marrón dorado para acentos
 };
 
-function TabPanel({ children, value, index }) {
+// Asumiendo que las imágenes estarán en la carpeta public
+const BACKGROUND_IMAGE = '/assets/library-background.jpg'; // La imagen con la persona
+const LOGO_IMAGE = '/assets/bitbooks-logo.png'; // El logo
+
+// Estilos de botón personalizados estilo Amazon
+const AmazonButton = ({ children, variant = 'primary', ...props }) => {
+  const buttonStyles = variant === 'primary' ? {
+    background: 'linear-gradient(180deg, #f7dfa5 0%, #f0c14b 100%)',
+    color: '#111',
+    border: '1px solid #a88734',
+    boxShadow: '0 1px 0 rgba(255,255,255,.4) inset',
+    '&:hover': {
+      background: 'linear-gradient(180deg, #f5d78e 0%, #eeb933 100%)',
+    }
+  } : {
+    background: 'linear-gradient(180deg, #f7f8fa 0%, #e7e9ec 100%)',
+    color: '#111',
+    border: '1px solid #a2a6ac',
+    boxShadow: '0 1px 0 rgba(255,255,255,.4) inset',
+    '&:hover': {
+      background: 'linear-gradient(180deg, #e7e9ec 0%, #d9dce1 100%)',
+    }
+  };
+
   return (
-    <div hidden={value !== index} style={{ padding: '20px 0' }}>
-      {value === index && children}
-    </div>
+    <Button
+      {...props}
+      sx={{
+        ...buttonStyles,
+        borderRadius: '3px',
+        padding: '8px 20px',
+        fontSize: '1rem',
+        fontWeight: 'normal',
+        textTransform: 'none',
+        '&:focus': {
+          boxShadow: '0 0 3px 2px rgb(228,121,17,.5)',
+          outline: 'none',
+        },
+        ...props.sx
+      }}
+    >
+      {children}
+    </Button>
   );
-}
+};
 
 function Home() {
-  const [tabValue, setTabValue] = useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <Box sx={{ bgcolor: '#f5f5f5', minHeight: '100vh', pt: 4 }}>
+    <Box sx={{ 
+      minHeight: '100vh',
+      background: `linear-gradient(rgba(44, 24, 16, 0.85), rgba(44, 24, 16, 0.85)), url(${BACKGROUND_IMAGE})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      display: 'flex',
+      alignItems: 'center',
+      color: colors.background
+    }}>
       <Container maxWidth="lg">
-        <Grid container spacing={4}>
-          {/* Columna Izquierda - Imagen y Precio */}
-          <Grid item xs={12} md={5}>
-            <Card elevation={3}>
-              <CardMedia
-                component="img"
-                image={libro.portada}
-                alt={libro.titulo}
-                sx={{
-                  height: 600,
-                  objectFit: 'cover',
-                  transition: '0.3s',
-                  '&:hover': {
-                    transform: 'scale(1.02)'
-                  }
+        <Grid container spacing={4} alignItems="center" justifyContent="space-between">
+          {/* Logo y Título */}
+          <Grid item xs={12} md={6}>
+            <Box sx={{
+              textAlign: { xs: 'center', md: 'left' },
+              mb: 4
+            }}>
+              <img 
+                src={LOGO_IMAGE} 
+                alt="BitBooks Logo" 
+                style={{
+                  maxWidth: '300px',
+                  width: '100%',
+                  marginBottom: '2rem',
+                  filter: 'drop-shadow(0 0 10px rgba(218, 165, 32, 0.3))'
                 }}
               />
-              <CardContent sx={{ textAlign: 'center' }}>
-                <Typography variant="h4" color="primary" gutterBottom>
-                  ${libro.precio}
-                </Typography>
-                <Button
-                  variant="contained"
+              <Typography 
+                variant="h2" 
+                component="h1" 
+                sx={{ 
+                  fontWeight: 'bold',
+                  mb: 3,
+                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+                  color: colors.secondary,
+                  fontFamily: '"Playfair Display", serif'
+                }}
+              >
+                Tu Biblioteca Digital
+              </Typography>
+              <Typography 
+                variant="h5" 
+                sx={{ 
+                  mb: 4,
+                  opacity: 0.9,
+                  color: colors.background,
+                  lineHeight: 1.6,
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
+                }}
+              >
+                Donde cada página te transporta a un nuevo mundo de conocimiento y aventura
+              </Typography>
+              <Box sx={{ display: 'flex', gap: 2, justifyContent: { xs: 'center', md: 'flex-start' } }}>
+                <AmazonButton
+                  variant="primary"
+                  startIcon={<ShoppingCartIcon />}
                   size="large"
-                  fullWidth
-                  startIcon={<AutoStoriesIcon />}
-                  sx={{ mb: 2 }}
+                  sx={{
+                    py: 1.5,
+                    px: 4,
+                    fontSize: '1.1rem'
+                  }}
                 >
-                  Comprar Ahora
-                </Button>
-                <ShoppingCart book={libro} />
-              </CardContent>
-            </Card>
-          </Grid>
-
-          {/* Columna Derecha - Detalles */}
-          <Grid item xs={12} md={7}>
-            <Box sx={{ mb: 4 }}>
-              <Typography variant="h3" component="h1" gutterBottom>
-                {libro.titulo}
-              </Typography>
-              <Typography variant="h5" color="text.secondary" gutterBottom>
-                por {libro.autor}
-              </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Rating value={4.5} readOnly precision={0.5} />
-                <Typography variant="body2" sx={{ ml: 1 }}>
-                  (basado en {libro.resenas.length} reseñas)
-                </Typography>
+                  Explorar Catálogo
+                </AmazonButton>
+                <AmazonButton
+                  variant="secondary"
+                  startIcon={<AutoStoriesIcon />}
+                  size="large"
+                  sx={{
+                    py: 1.5,
+                    px: 4,
+                    fontSize: '1.1rem'
+                  }}
+                >
+                  Vista Previa
+                </AmazonButton>
               </Box>
             </Box>
+          </Grid>
 
-            <Paper elevation={3} sx={{ mb: 4 }}>
-              <Tabs value={tabValue} onChange={(e, v) => setTabValue(v)} sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tab label="Descripción" />
-                <Tab label="Características" />
-                <Tab label="Reseñas" />
-              </Tabs>
-
-              <Box sx={{ p: 3 }}>
-                <TabPanel value={tabValue} index={0}>
-                  <Typography variant="body1" paragraph>
-                    {libro.descripcion}
-                  </Typography>
-                  <Typography variant="body1" component="pre" sx={{ whiteSpace: 'pre-line' }}>
-                    {libro.detalles}
-                  </Typography>
-                </TabPanel>
-
-                <TabPanel value={tabValue} index={1}>
-                  <Stack spacing={2}>
-                    {libro.caracteristicas.map((caracteristica, index) => (
-                      <Chip
-                        key={index}
-                        icon={<LocalOfferIcon />}
-                        label={caracteristica}
-                        variant="outlined"
-                        sx={{ justifyContent: 'flex-start', maxWidth: '100%' }}
-                      />
-                    ))}
-                  </Stack>
-                </TabPanel>
-
-                <TabPanel value={tabValue} index={2}>
-                  <Stack spacing={3}>
-                    {libro.resenas.map((resena) => (
-                      <Box key={resena.id} sx={{ borderBottom: 1, borderColor: 'divider', pb: 2 }}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                          <Rating 
-                            value={resena.puntuacion} 
-                            readOnly 
-                            size="small"
-                            icon={<StarIcon fontSize="inherit" />}
-                            emptyIcon={<StarIcon fontSize="inherit" />}
-                          />
-                          <Typography variant="subtitle2" sx={{ ml: 1 }}>
-                            {resena.autor}
-                          </Typography>
-                        </Box>
-                        <Typography variant="body2">{resena.comentario}</Typography>
-                      </Box>
-                    ))}
-                  </Stack>
-                </TabPanel>
-              </Box>
+          {/* Tarjeta Destacada */}
+          <Grid item xs={12} md={5}>
+            <Paper 
+              elevation={6}
+              sx={{
+                p: 4,
+                backgroundColor: 'rgba(253, 245, 230, 0.95)',
+                borderRadius: '8px',
+                color: colors.text,
+                textAlign: 'center',
+                border: `1px solid ${colors.secondary}`,
+                boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+              }}
+            >
+              <Typography 
+                variant="h4" 
+                component="h2" 
+                gutterBottom
+                sx={{
+                  color: colors.primary,
+                  fontFamily: '"Playfair Display", serif',
+                  fontWeight: 'bold'
+                }}
+              >
+                Beneficios Exclusivos
+              </Typography>
+              <Typography 
+                variant="body1" 
+                paragraph
+                sx={{
+                  fontSize: '1.1rem',
+                  lineHeight: 1.8,
+                  mb: 3
+                }}
+              >
+                • Acceso ilimitado a miles de libros digitales<br/>
+                • Descuentos exclusivos para miembros<br/>
+                • Contenido premium seleccionado<br/>
+                • Lecturas recomendadas personalizadas
+              </Typography>
+              <AmazonButton
+                variant="primary"
+                size="large"
+                sx={{
+                  width: '80%',
+                  mt: 2
+                }}
+              >
+                Únete Ahora
+              </AmazonButton>
+              <Typography 
+                variant="body2" 
+                sx={{ 
+                  mt: 2,
+                  color: colors.accent,
+                  fontStyle: 'italic'
+                }}
+              >
+                ¡Los primeros 30 días son gratis!
+              </Typography>
             </Paper>
           </Grid>
         </Grid>
