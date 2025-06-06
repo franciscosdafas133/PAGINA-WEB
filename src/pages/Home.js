@@ -20,8 +20,8 @@ const colors = {
 };
 
 // Asumiendo que las imágenes estarán en la carpeta public
-const BACKGROUND_IMAGE = '/assets/bitbook.jpg'; // La imagen de fondo
-const LOGO_IMAGE = '/assets/bitbooks.jpg'; // El logo
+const BACKGROUND_IMAGE = '/assets/library-background.jpg'; // La imagen de fondo
+const LOGO_IMAGE = '/assets/bitbooks-logo.jpg'; // El logo
 
 // Estilos de botón personalizados estilo Amazon
 const AmazonButton = ({ children, variant = 'primary', ...props }) => {
