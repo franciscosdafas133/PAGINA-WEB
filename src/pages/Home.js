@@ -106,7 +106,7 @@ function Home() {
                   fontFamily: '"Playfair Display", serif'
                 }}
               >
-                Tu Biblioteca Digital
+                BitBooks
               </Typography>
               <Typography 
                 variant="h5" 

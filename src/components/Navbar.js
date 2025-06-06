@@ -42,7 +42,7 @@ function Navbar() {
                 letterSpacing: 1
               }}
             >
-              Mi Libro Digital
+              BitBooks
             </Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
               <Button

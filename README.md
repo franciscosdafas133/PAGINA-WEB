@@ -1,4 +1,4 @@
-# Mi Biblioteca Digital
+# BitBooks
 
 Este es un proyecto web para publicar y mostrar libros digitales. Construido con React y diseñado para ser desplegado en Netlify.
 
