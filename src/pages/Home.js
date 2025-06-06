@@ -5,9 +5,7 @@ import {
   Typography,
   Button,
   Box,
-  Paper,
-  useTheme,
-  useMediaQuery
+  Paper
 } from '@mui/material';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -68,9 +66,6 @@ const AmazonButton = ({ children, variant = 'primary', ...props }) => {
 };
 
 function Home() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
   return (
     <Box sx={{ 
       minHeight: '100vh',
